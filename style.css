@@ -80,7 +80,7 @@ body {
     position: relative;
 }
 
-.chat .message::after {
+.chat .message::before {
     content: '17:53';
     position: absolute;
     bottom: 2px;
@@ -94,11 +94,36 @@ body {
     float: left;
 }
 
+.other-message::after {
+    content:'';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid white;
+}
+
 .my-message {
     background-color: rgb(220, 248, 198);
     float: right;
-
 }
+
+.my-message::after {
+    content:'';
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(220, 248, 198);
+}
+
+
 .footer-right {
     background-color: rgb(237, 237, 237);
     height: 7%;
@@ -195,6 +220,10 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.chat-preview:first-of-type {
+    background-color: rgb(215, 215, 215);
 }
 
 .footer-right {
