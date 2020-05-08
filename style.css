@@ -9,6 +9,7 @@ body {
     background: linear-gradient(0deg, rgba(218,219,213,1) 85%, rgba(0,150,136,1) 85%);
     height: 100vh;
     display: flex;
+    font-family: 'Jost', sans-serif;
 }
 
 .container {
@@ -34,8 +35,32 @@ body {
 
 .header-right, .header-left {
     height: 7%;
+    width: 100%;
+    padding: 0 10px;
     background-color: rgb(237, 237, 237);
     border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-icons {
+    display: flex;
+    width: 100px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-icons i {
+    font-size: 18px;
+    color: grey;
 }
 
 .chat {
@@ -43,8 +68,37 @@ body {
     background-size: contain;
     background-repeat: repeat;
     height: 86%;
+    overflow-y: scroll;
+    padding: 30px;
 }
 
+.chat .message {
+    padding: 15px;
+    border-radius: 5px;
+    clear: both;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.chat .message::after {
+    content: '17:53';
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 10px;
+    color: darkgrey;
+}
+
+.other-message {
+    background-color: white;
+    float: left;
+}
+
+.my-message {
+    background-color: rgb(220, 248, 198);
+    float: right;
+
+}
 .footer-right {
     background-color: rgb(237, 237, 237);
     height: 7%;
@@ -53,6 +107,28 @@ body {
 .banner {
     height: 10%;
     background-color: rgb(157, 225, 254);
+    display: flex;
+    align-items: center;
+    color: rgb(100, 100, 100);
+}
+
+.img-circle {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.banner i {
+    color: rgb(157, 225, 254);
+    padding: 15px;
+    font-size: 20px;
+}
+
+.banner a {
+    color: grey;
+}
+
+.img-circle, .banner-text {
+    margin-left: 10px;
 }
 
 .search {
@@ -107,9 +183,18 @@ input {
     overflow-y: scroll;
 }
 
+.chat-container p, .header-right p {
+    color: grey;
+    font-size: 14px;
+}
+
 .chat-preview {
     height: 12%;
+    padding: 0 10px;
     border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .footer-right {
@@ -121,4 +206,22 @@ input {
 .icon-container {
     display: flex;
     width: 7.5%;
+}
+
+.info {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info img, .img-header img {
+    height: 80%;
+    width: auto;
+    border-radius: 50%;
+    background-color: lightgrey;
+}
+
+.info-text {
+    margin-left: 10px;
 }
