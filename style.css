@@ -3,3 +3,122 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background: rgb(218,219,213);
+    background: linear-gradient(0deg, rgba(218,219,213,1) 85%, rgba(0,150,136,1) 85%);
+    height: 100vh;
+    display: flex;
+}
+
+.container {
+    width: 75%;
+    height: 90%;
+    margin: auto;
+    background-color: white;
+}
+
+.left, .right {
+    float: left;
+    border: 1px solid lightgrey;
+    height: 100%;
+}
+
+.left {
+    width: 30%;
+}
+
+.right {
+    width: 70%;
+}
+
+.header-right, .header-left {
+    height: 7%;
+    background-color: rgb(237, 237, 237);
+    border-bottom: 1px solid lightgrey;
+}
+
+.chat {
+    background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
+    background-size: contain;
+    background-repeat: repeat;
+    height: 86%;
+}
+
+.footer-right {
+    background-color: rgb(237, 237, 237);
+    height: 7%;
+}
+
+.banner {
+    height: 10%;
+    background-color: rgb(157, 225, 254);
+}
+
+.search {
+    height: 5%;
+    background-color: rgb(237, 237, 237);
+    display: flex;
+}
+
+.input {
+    margin: auto;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+}
+.search input {
+    border: 0;
+    width: 90%;
+    padding: 8px 20px;
+}
+
+.footer-right input {
+    border: 0;
+    width: 85%;
+    padding: 15px 10px;
+    border-radius: 20px;
+}
+
+.search i {
+    color: lightgrey;
+}
+
+.footer-right i {
+    color: grey;
+    font-size: 20px;
+    display: inline-block;
+    margin: auto;
+}
+
+input:focus {
+    outline: 0;
+}
+
+input {
+    color: grey;
+}
+
+.chat-container {
+    height: 78%;
+    overflow-y: scroll;
+}
+
+.chat-preview {
+    height: 12%;
+    border-bottom: 1px solid lightgrey;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-container {
+    display: flex;
+    width: 7.5%;
+}
