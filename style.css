@@ -164,6 +164,7 @@ body {
 
 .input {
     margin: auto;
+    height: 80%;
     width: 95%;
     display: flex;
     justify-content: center;
@@ -173,6 +174,7 @@ body {
 }
 .search input {
     border: 0;
+    height: 80%;
     width: 90%;
     padding: 8px 20px;
 }
@@ -191,6 +193,7 @@ body {
 .footer-right i {
     color: grey;
     font-size: 20px;
+    height: 90%;
     display: inline-block;
     margin: auto;
 }
@@ -208,9 +211,14 @@ input {
     overflow-y: scroll;
 }
 
-.chat-container p, .header-right p {
+.chat-container p  {
     color: grey;
     font-size: 14px;
+}
+
+.header-right p {
+    color: grey;
+    font-size: 12px;
 }
 
 .chat-preview {
@@ -224,6 +232,10 @@ input {
 
 .chat-preview:first-of-type {
     background-color: rgb(215, 215, 215);
+}
+
+.chat-preview .ora {
+    font-size: 10px;
 }
 
 .footer-right {
@@ -253,6 +265,11 @@ input {
 
 .info-text {
     margin-left: 10px;
+}
+
+.header-right .info-text h4{
+    line-height: 15px;
+    font-size: 14px;
 }
 
 @media (max-width: 1280px) {
