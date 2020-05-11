@@ -85,16 +85,16 @@ $(document).ready(function() {
         }
     })
 
-    $('.message i').click(function() {
-        alert('click');
-        var drop = $(this).next().next('.message-dropdown');
-        if (drop.hasClass('message-dropdown-active')) {
-            $('.message-dropdown').removeClass('message-dropdown-active');
-        } else {
-            $('.message-dropdown').removeClass('message-dropdown-active');
-            drop.addClass('message-dropdown-active');
-        }
-    })
+    // $('.message i').click(function() {
+    //     alert('click');
+    //     var drop = $(this).next().next('.message-dropdown');
+    //     if (drop.hasClass('message-dropdown-active')) {
+    //         $('.message-dropdown').removeClass('message-dropdown-active');
+    //     } else {
+    //         $('.message-dropdown').removeClass('message-dropdown-active');
+    //         drop.addClass('message-dropdown-active');
+    //     }
+    // })
 })
 
 //DA FARE MILESTONE 3
