@@ -34,7 +34,7 @@ body {
 }
 
 .header-right, .header-left {
-    height: 7%;
+    height: 61px;
     width: 100%;
     padding: 0 10px;
     background-color: rgb(237, 237, 237);
@@ -67,7 +67,7 @@ body {
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
     background-size: contain;
     background-repeat: repeat;
-    height: 86%;
+    height: calc(100% - 121px);
     overflow-y: scroll;
     padding: 30px;
 }
@@ -130,7 +130,7 @@ body {
 }
 
 .banner {
-    height: 10%;
+    height: 87px;
     background-color: rgb(157, 225, 254);
     display: flex;
     align-items: center;
@@ -157,7 +157,7 @@ body {
 }
 
 .search {
-    height: 5%;
+    height: 43.5px;
     background-color: rgb(237, 237, 237);
     display: flex;
 }
@@ -207,7 +207,7 @@ input {
 }
 
 .chat-container {
-    height: 78%;
+    height: calc(100% - 191.5px);
     overflow-y: scroll;
 }
 
@@ -222,7 +222,7 @@ input {
 }
 
 .chat-preview {
-    height: 12%;
+    height: 81px;
     padding: 0 10px;
     border-bottom: 1px solid lightgrey;
     display: flex;
@@ -239,6 +239,7 @@ input {
 }
 
 .footer-right {
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
