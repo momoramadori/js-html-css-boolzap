@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-    //Milestone 1 con BONUS invio!
+
+    //MILESTONE 1 PT 1
 
     //Icona dell'aereoplano sostituisce il microfono quando entriamo sull'input
     $('.footer-right input').focus(function(){
@@ -24,14 +25,15 @@ $(document).ready(function() {
         //copiamo il template dove vogliamo che esso appaia
         $('.template>div:first-of-type').clone().appendTo('.chat');
         $('.footer-right input').val('');
-        //Milestone 2 pt 1
+
+        //MILESTONE 2 PT 1
         setTimeout(function(){
             $('.template>div:nth-of-type(2)').clone().appendTo('.chat')
         },1000)
     })
 
     //inviare anche con enter BONUS
-    $('.footer-right input').bind("enterKey",function(e){
+    $('.footer-right input').on("enterKey",function(e){
         var testo_utente = $('.footer-right input').val();
         $('.template #casella').text(testo_utente);
         $('.template>div:first-of-type').clone().appendTo('.chat')
@@ -46,36 +48,17 @@ $(document).ready(function() {
         }
     })
 
-    //Punto 2 MILESTONE 2
+    //MILESTONE 2 PT 2
+
     //Ricerca contatti con click
     $('.input i').click(function(){
-        $(".info-text h4").each(function(){
-            var ricerca_utente = $('.input input').val();
-            console.log(ricerca_utente);
-            var nomi_contatti = $(this).text();
-            console.log(this);
-            console.log($(this).text());
-            if (!(nomi_contatti.includes(ricerca_utente))) {
-                $(this).closest('.chat-preview').hide();
-            } else if (ricerca_utente == '') {
-                $('.chat-preview').show();
-            }
-        })
+        $(".info-text h4").each(research)
         $('.input input').val('');
     })
 
     //Bonus enter per la ricerca dei contatti
-    $('.input input').bind("enterKey",function(e){
-        $(".info-text h4").each(function(){
-            var ricerca_utente = $('.input input').val();
-            console.log(ricerca_utente);
-            var nomi_contatti = $(this).text();
-            console.log(this);
-            console.log($(this).text());
-            if (!(nomi_contatti.includes(ricerca_utente))) {
-                $(this).closest('.chat-preview').hide();
-            }
-        })
+    $('.input input').on("enterKey",function(e){
+        $(".info-text h4").each(research)
     })
 
     $('.input input').keyup(function(e){
@@ -85,18 +68,42 @@ $(document).ready(function() {
         }
     })
 
-    // $('.message i').click(function() {
-    //     alert('click');
-    //     var drop = $(this).next().next('.message-dropdown');
-    //     if (drop.hasClass('message-dropdown-active')) {
-    //         $('.message-dropdown').removeClass('message-dropdown-active');
-    //     } else {
-    //         $('.message-dropdown').removeClass('message-dropdown-active');
-    //         drop.addClass('message-dropdown-active');
-    //     }
-    // })
+    function research() {
+            var ricerca_utente = $('.input input').val().toUpperCase();
+            console.log(ricerca_utente);
+            var nomi_contatti = $(this).text().toUpperCase();
+            console.log(this);
+            console.log($(this).text());
+            if (!(nomi_contatti.includes(ricerca_utente))) {
+                $(this).closest('.chat-preview').hide();
+            } else if (ricerca_utente == '') {
+                $('.chat-preview').show();
+            }
+        }
+
+    //MILESTONE 3
+
+    //MILESTONE 3 PT 1 da fare domani
+
+
+    //MILESTONE 3 PT 2
+    $('body').on('click','.message i', function() {
+        var drop = $(this).next().next('.message-dropdown');
+        if (drop.hasClass('message-dropdown-active')) {
+            $('.message-dropdown').removeClass('message-dropdown-active');
+        } else {
+            $('.message-dropdown').removeClass('message-dropdown-active');
+            drop.addClass('message-dropdown-active');
+        }
+    })
+
+    $('body').on('click','.message-delete', function() {
+        $(this).closest('.message').hide();
+    })
 })
 
-//DA FARE MILESTONE 3
+
+
+//DA FARE MILESTONE 3 pt.1
 
 //Delete message MILESTONE 3 PARTE 3
