@@ -72,6 +72,38 @@ body {
     padding: 30px;
 }
 
+.message i {
+    color: rgba(187, 187, 187, 0);
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    z-index: 10;
+}
+
+.message:hover i {
+    color: rgba(187, 187, 187, 1);
+}
+
+.message-dropdown {
+    display: none
+}
+
+.message-dropdown-active {
+    display: block;
+    position: absolute;
+    padding: 10px;
+    top: 70%;
+    background-color: rgb(237,237,237);
+    border-radius: 5px;
+    right: -30%;
+    z-index: 10;
+}
+
+.my-message .message-dropdown-active {
+    right: 2px;
+}
+
+
 .chat .message {
     padding: 15px;
     border-radius: 5px;
@@ -198,6 +230,10 @@ body {
     margin: auto;
 }
 
+.footer-right i:hover {
+    color: rgba(0,150,136,1);
+}
+
 input:focus {
     outline: 0;
 }
@@ -250,6 +286,10 @@ input {
     width: 7.5%;
 }
 
+.footer-right i.icon-unactive {
+    display: none;
+}
+
 .info {
     height: 100%;
     display: flex;
@@ -271,6 +311,10 @@ input {
 .header-right .info-text h4{
     line-height: 15px;
     font-size: 14px;
+}
+
+.template {
+    display: none;
 }
 
 @media (max-width: 1280px) {

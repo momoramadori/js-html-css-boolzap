@@ -6,8 +6,8 @@
         <link rel="icon" href="img/whatsapp.png" type="image/png" />
         <link href="https://fonts.googleapis.com/css?family=Jost:400,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <script src="https://kit.fontawesome.com/a41fcd4d62.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/a41fcd4d62.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
@@ -155,44 +155,7 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
-                <div class="chat">
-                    <div class="other-message message">
-                        <p>Ciao come stai?</p>
-                    </div>
-                    <div class="my-message message">
-                        <p>Bene grazie tu?</p>
-                    </div>
-                    <div class="other-message message">
-                        <p>Io ho il raffreddore</p>
-                    </div>
-                    <div class="my-message message">
-                        <p>Hai fatto il tampone?</p>
-                    </div>
-                    <div class="other-message message">
-                        <p>Ancora no...</p>
-                    </div>
-                    <div class="my-message message">
-                        <p>Ti conviene farlo il prima possibile per evitare qualsiasi pericolo!!</p>
-                    </div>
-                    <div class="other-message message">
-                        <p>Seguirò senza dubbio il tuo consiglio, grazie mille!</p>
-                    </div>
-                    <div class="other-message message">
-                        <p>Tu invece che mi racconti?</p>
-                    </div>
-                    <div class="my-message message">
-                        <p>Mi sto divertendo un sacco a parlare con me stesso :D</p>
-                    </div>
-                    <div class="other-message message">
-                        <p>Sì.. in effetti io sono te e tu sei me!</p>
-                    </div>
-                    <div class="my-message message">
-                        <p>Uso un lorem ipsum per vedere sto overflow ehh, mi sono rotto!!</p>
-                    </div>
-                    <div class="my-message message">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
+                <div class="chat"></div>
                 <div class="footer-right">
                     <div class="icon-container">
                         <i class="far fa-smile"></i>
@@ -200,11 +163,29 @@
                     <input type="text" placeholder='Scrivi un messaggio'>
                     <div class="icon-container">
                         <i class="fas fa-microphone"></i>
+                        <i class="fas fa-paper-plane icon-unactive"></i>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="template">
+            <div class="my-message message">
+                <i class="fas fa-angle-down"></i>
+                <p id='casella'></p>
+                <div class="message-dropdown">
+                    <p class="message-info">Message Info</p>
+                    <p class="message-delete">Delete Message</p>
+                </div>
+            </div>
+            <div class="other-message message">
+                <i class="fas fa-angle-down"></i>
+                <p>ok!</p>
+                <div class="message-dropdown">
+                    <p class="message-info">Message Info</p>
+                    <p class="message-delete">Delete Message</p>
+                </div>
+            </div>
+        </div>
 
         <script src="main.js" charset="utf-8"></script>
     </body>
