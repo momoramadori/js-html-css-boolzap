@@ -15,7 +15,7 @@ $(document).ready(function() {
         }
     })
 
-    //Inseriamo l'inpute dell'utente in un messaggio al click dell'icona dell'aereo
+    //Inseriamo l'input dell'utente in un messaggio al click dell'icona dell'aereo
     $('.footer-right i').click(function(){
         //identifichiamo il VALORE dell'input e lo salviamo
         var testo_utente = $('.footer-right input').val();
@@ -46,9 +46,45 @@ $(document).ready(function() {
         }
     })
 
-    //Milestone 2 pt 2
+    //Punto 2 MILESTONE 2
+    //Ricerca contatti con click
+    $('.input i').click(function(){
+        $(".info-text h4").each(function(){
+            var ricerca_utente = $('.input input').val();
+            console.log(ricerca_utente);
+            var nomi_contatti = $(this).text();
+            console.log(this);
+            console.log($(this).text());
+            if (!(nomi_contatti.includes(ricerca_utente))) {
+                $(this).closest('.chat-preview').hide();
+            } else if (ricerca_utente == '') {
+                $('.chat-preview').show();
+            }
+        })
+        $('.input input').val('');
+    })
 
-    //Delete message MILESTONE 3 PARTE 3
+    //Bonus enter per la ricerca dei contatti
+    $('.input input').bind("enterKey",function(e){
+        $(".info-text h4").each(function(){
+            var ricerca_utente = $('.input input').val();
+            console.log(ricerca_utente);
+            var nomi_contatti = $(this).text();
+            console.log(this);
+            console.log($(this).text());
+            if (!(nomi_contatti.includes(ricerca_utente))) {
+                $(this).closest('.chat-preview').hide();
+            }
+        })
+    })
+
+    $('.input input').keyup(function(e){
+        if(e.keyCode == 13) {
+            $(this).trigger("enterKey");
+            $('.input input').val('');
+        }
+    })
+
     $('.message i').click(function() {
         alert('click');
         var drop = $(this).next().next('.message-dropdown');
@@ -61,39 +97,6 @@ $(document).ready(function() {
     })
 })
 
-//Punto 2 MILESTONE 2
-//Ricerca contatti con click
-$('.input i').click(function(){
-    $(".info-text h4").each(function(){
-        var ricerca_utente = $('.input input').val();
-        console.log(ricerca_utente);
-        var nomi_contatti = $(this).text();
-        console.log(this);
-        console.log($(this).text());
-        if (!(nomi_contatti.includes(ricerca_utente))) {
-            $(this).closest('.chat-preview').hide();
-        } else if (ricerca_utente == '') {
-            $('.chat-preview').show();
-        }
-    })
-})
+//DA FARE MILESTONE 3
 
-
-//Bonus enter per la ricerca dei contatti
-$('.input input').bind("enterKey",function(e){
-    $(".info-text h4").each(function(){
-        var ricerca_utente = $('.input input').val();
-        console.log(ricerca_utente);
-        var nomi_contatti = $(this).text();
-        console.log(this);
-        console.log($(this).text());
-        if (!(nomi_contatti.includes(ricerca_utente))) {
-            $(this).closest('.chat-preview').hide();
-        }
-    })
-})
-$('.input input').keyup(function(e){
-    if(e.keyCode == 13) {
-        $(this).trigger("enterKey");
-    }
-})
+//Delete message MILESTONE 3 PARTE 3
