@@ -70,10 +70,7 @@ $(document).ready(function() {
 
     function research() {
             var ricerca_utente = $('.input input').val().toUpperCase();
-            console.log(ricerca_utente);
             var nomi_contatti = $(this).text().toUpperCase();
-            console.log(this);
-            console.log($(this).text());
             if (!(nomi_contatti.includes(ricerca_utente))) {
                 $(this).closest('.chat-preview').hide();
             } else if (ricerca_utente == '') {
@@ -105,5 +102,15 @@ $(document).ready(function() {
 
 
 //DA FARE MILESTONE 3 pt.1
-
-//Delete message MILESTONE 3 PARTE 3
+//Al click aprire la chat del singolo utente e poterci scrivere
+// $('.chat-preview').each(function() {
+//     $('.chat-wrapper').append('<div class="chat"></div>')
+// })
+//
+// $('.chat-preview').click(function() {
+//     var indice_chat_corrente = $(this).index();
+//     var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
+//     $('.chat').removeClass('active-chat');
+//     spazio_chat_corrispondente.addClass('active-chat');
+//
+// })
