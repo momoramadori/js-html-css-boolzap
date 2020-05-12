@@ -63,21 +63,13 @@ body {
     color: grey;
 }
 
-.chat-wrapper {
+.chat {
     height: calc(100% - 121px);
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
     background-size: contain;
     background-repeat: repeat;
     overflow-y: scroll;
     padding: 30px
-}
-
-.chat {
-    display: none;
-}
-
-.active-chat {
-    display: block
 }
 
 .message i {

@@ -103,14 +103,14 @@ $(document).ready(function() {
 
 //DA FARE MILESTONE 3 pt.1
 //Al click aprire la chat del singolo utente e poterci scrivere
-// $('.chat-preview').each(function() {
-//     $('.chat-wrapper').append('<div class="chat"></div>')
-// })
-//
-// $('.chat-preview').click(function() {
-//     var indice_chat_corrente = $(this).index();
-//     var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
-//     $('.chat').removeClass('active-chat');
-//     spazio_chat_corrispondente.addClass('active-chat');
-//
-// })
+$('.chat-preview').each(function() {
+    $('.chat-wrapper').append('<div class="chat"></div>')
+})
+
+$('.chat-preview').click(function() {
+    var indice_chat_corrente = $(this).index();
+    var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
+    $('.chat-preview').removeClass('active-chat');
+    spazio_chat_corrispondente.addClass('active-chat');
+
+})
