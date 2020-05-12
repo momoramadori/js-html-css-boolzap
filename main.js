@@ -17,56 +17,55 @@ $(document).ready(function() {
     })
 
     //Inseriamo l'input dell'utente in un messaggio al click dell'icona dell'aereo
-    $('.footer-right i').click(function(){
-        //identifichiamo il VALORE dell'input e lo salviamo
-        var testo_utente = $('.footer-right input').val();
-        //inseriamo il valore dell'input nel nostro template
-        $('.template #casella').text(testo_utente);
-        //copiamo il template dove vogliamo che esso appaia
-        $('.template>div:first-of-type').clone().appendTo('.chat');
-        $('.footer-right input').val('');
-
-        //MILESTONE 2 PT 1
-        setTimeout(function(){
-            $('.template>div:nth-of-type(2)').clone().appendTo('.chat')
-        },1000)
-    })
-
-    //inviare anche con enter BONUS
-    $('.footer-right input').on("enterKey",function(e){
-        var testo_utente = $('.footer-right input').val();
-        $('.template #casella').text(testo_utente);
-        $('.template>div:first-of-type').clone().appendTo('.chat')
-        setTimeout(function(){
-            $('.template>div:nth-of-type(2)').clone().appendTo('.chat')
-        },1000)
-    })
-    $('.footer-right input').keyup(function(e){
-        if(e.keyCode == 13) {
-            $(this).trigger("enterKey");
-            $('.footer-right input').val('');
+    $('.footer-right i').click(invia_messaggio)
+    // //inviare anche con enter BONUS
+    $('.footer-right input').keypress(function(event) {
+        // verifico se l'utente ha digitato "ENTER"
+        if(event.which == 13) {
+            invia_messaggio();
         }
-    })
+    });
+
+    function invia_messaggio() {
+        // recupero il testo inserito dall'utente nell'input
+        var testo_utente = $('.footer-right input').val();
+        // verifico che il testo digitato non sia vuoto (o che non contenga solo " ")
+        if(testo_utente.trim() != '') {
+            // faccio una copia del template per creare un nuovo messaggio
+            var nuovo_messaggio = $('.template .message').clone();
+            // aggiungo la classe "sent" al messaggio
+            nuovo_messaggio.addClass('my-message');
+            // inserisco il testo dell'utente nello span "message-text"
+            nuovo_messaggio.children('.casella').text(testo_utente);
+            // inserisco il nuovo messaggio nel contenitore di tutti i messaggi della conversazione
+            $('.chat').append(nuovo_messaggio);
+            // resetto l'input
+            $('.footer-right input').val('');
+
+            //MILESTONE 2 PT 1
+            setTimeout(function(){
+                var nuovo2_messaggio = $('.template .message').clone();
+                nuovo2_messaggio.addClass('other-message');
+                nuovo2_messaggio.children('.casella').text('ok!');
+                $('.chat').append(nuovo2_messaggio);
+            },1000)
+        }
+    }
 
     //MILESTONE 2 PT 2
-
     //Ricerca contatti con click
     $('.input i').click(function(){
         $(".info-text h4").each(research)
         $('.input input').val('');
     })
 
-    //Bonus enter per la ricerca dei contatti
-    $('.input input').on("enterKey",function(e){
-        $(".info-text h4").each(research)
-    })
-
-    $('.input input').keyup(function(e){
-        if(e.keyCode == 13) {
-            $(this).trigger("enterKey");
+    $('.input input').keypress(function(event) {
+        // verifico se l'utente ha digitato "ENTER"
+        if(event.which == 13) {
+            $(".info-text h4").each(research)
             $('.input input').val('');
         }
-    })
+    });
 
     function research() {
             var ricerca_utente = $('.input input').val().toUpperCase();
@@ -99,18 +98,22 @@ $(document).ready(function() {
     })
 })
 
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes();
+$('.ora').text(time);
 
 
-//DA FARE MILESTONE 3 pt.1
-//Al click aprire la chat del singolo utente e poterci scrivere
-$('.chat-preview').each(function() {
-    $('.chat-wrapper').append('<div class="chat"></div>')
-})
 
-$('.chat-preview').click(function() {
-    var indice_chat_corrente = $(this).index();
-    var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
-    $('.chat-preview').removeClass('active-chat');
-    spazio_chat_corrispondente.addClass('active-chat');
-
-})
+// //DA FARE MILESTONE 3 pt.1
+// //Al click aprire la chat del singolo utente e poterci scrivere
+// $('.chat-preview').each(function() {
+//     $('.chat-wrapper').append('<div class="chat"></div>')
+// })
+//
+// $('.chat-preview').click(function() {
+//     var indice_chat_corrente = $(this).index();
+//     var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
+//     $('.chat-preview').removeClass('active-chat');
+//     spazio_chat_corrispondente.addClass('active-chat');
+//
+// })

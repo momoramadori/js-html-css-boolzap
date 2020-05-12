@@ -118,8 +118,7 @@ body {
     position: relative;
 }
 
-.chat .message::before {
-    content: '17:53';
+.messaggio {
     position: absolute;
     bottom: 2px;
     right: 4px;
