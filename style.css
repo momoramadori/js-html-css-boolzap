@@ -69,7 +69,12 @@ body {
     background-size: contain;
     background-repeat: repeat;
     overflow-y: scroll;
-    padding: 30px
+    padding: 30px;
+    display: none;
+}
+
+.chat-active {
+    display: block;
 }
 
 .message i {

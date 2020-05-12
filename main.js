@@ -38,7 +38,7 @@ $(document).ready(function() {
             // inserisco il testo dell'utente nello span "message-text"
             nuovo_messaggio.children('.casella').text(testo_utente);
             // inserisco il nuovo messaggio nel contenitore di tutti i messaggi della conversazione
-            $('.chat').append(nuovo_messaggio);
+            $('.chat.chat-active').append(nuovo_messaggio);
             // resetto l'input
             $('.footer-right input').val('');
 
@@ -47,7 +47,7 @@ $(document).ready(function() {
                 var nuovo2_messaggio = $('.template .message').clone();
                 nuovo2_messaggio.addClass('other-message');
                 nuovo2_messaggio.children('.casella').text('ok!');
-                $('.chat').append(nuovo2_messaggio);
+                $('.chat.chat-active').append(nuovo2_messaggio);
             },1000)
         }
     }
@@ -81,6 +81,30 @@ $(document).ready(function() {
 
     //MILESTONE 3 PT 1 da fare domani
 
+    // //DA FARE MILESTONE 3 pt.1
+    //Al click aprire la chat del singolo utente e poterci scrivere
+    $('.chat-preview').click(function() {
+        //recupero la posizione del contatto su cui sono
+        var posizione_contatto = $(this).index();
+        //definisco la posizione della chat corrispondente
+        var chat_corrispondente = $('.chat').eq(posizione_contatto);
+        //identifico la chat visibile
+        var chat_corrente = $('.chat.chat-active');
+        console.log(chat_corrente);
+        //rendo la chat  invisibile
+        chat_corrente.removeClass('chat-active');
+        //nascondo i messaggi al suo interno
+        chat_corrente.find('.message').hide();
+        console.log(chat_corrente);
+        //rendo visibile la chat corrispondente al contatto su cui ho cliccato
+        chat_corrispondente.addClass('chat-active');
+        //rendo visibili i suoi messaggi
+        chat_corrispondente.find('.message').show();
+        console.log(chat_corrispondente);
+    })
+
+
+
 
     //MILESTONE 3 PT 2
     $('body').on('click','.message i', function() {
@@ -98,18 +122,23 @@ $(document).ready(function() {
     })
 })
 
-var today = new Date();
-var time = today.getHours() + ":" + today.getMinutes();
-$('.ora').text(time);
+//Aggiunto orario attuale alle chat
+$('.ora').text(orario());
+function orario() {
+    var today = new Date();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+    if (minutes < 10) {
+        var time = today.getHours() + ":0" + today.getMinutes();
+    } else {
+        var time = today.getHours() + ":" + today.getMinutes();
+    }
+    return time
+}
 
 
 
-// //DA FARE MILESTONE 3 pt.1
-// //Al click aprire la chat del singolo utente e poterci scrivere
-// $('.chat-preview').each(function() {
-//     $('.chat-wrapper').append('<div class="chat"></div>')
-// })
-//
+
 // $('.chat-preview').click(function() {
 //     var indice_chat_corrente = $(this).index();
 //     var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
