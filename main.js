@@ -55,10 +55,13 @@ $(document).ready(function() {
     //MILESTONE 2 PT 2
     //Ricerca contatti con click
     $('.input i').click(function(){
+        //al click sull'icona applico la funzione ad ogni contatto e verifico il tutto, rimarranno visibili solo quelli che includono la ricerca
         $(".info-text h4").each(research)
+        //dopodichè libero l'input
         $('.input input').val('');
     })
 
+    //faccio la stessa cosa ma con l'enter
     $('.input input').keypress(function(event) {
         // verifico se l'utente ha digitato "ENTER"
         if(event.which == 13) {
@@ -68,57 +71,67 @@ $(document).ready(function() {
     });
 
     function research() {
-            var ricerca_utente = $('.input input').val().toUpperCase();
-            var nomi_contatti = $(this).text().toUpperCase();
-            if (!(nomi_contatti.includes(ricerca_utente))) {
-                $(this).closest('.chat-preview').hide();
-            } else if (ricerca_utente == '') {
-                $('.chat-preview').show();
-            }
+        //identifico il valore inserito dall'utente e lo rendo uppercase
+        var ricerca_utente = $('.input input').val().toUpperCase();
+        //identifico i nomi dei contatti e li rendo uppercase
+        var nomi_contatti = $(this).text().toUpperCase();
+        //se non includono la ricerca dell'utente li rendo invisibili
+        if (!(nomi_contatti.includes(ricerca_utente))) {
+            $(this).closest('.chat-preview').hide();
+            //se la ricerca dell'utente è vuota ricompaiono tutti
+        } else if (ricerca_utente == '') {
+            $('.chat-preview').show();
         }
+    }
 
     //MILESTONE 3
 
-    //MILESTONE 3 PT 1 da fare domani
+    //MILESTONE 3 PT 1
 
-    // //DA FARE MILESTONE 3 pt.1
     //Al click aprire la chat del singolo utente e poterci scrivere
     $('.chat-preview').click(function() {
         //recupero la posizione del contatto su cui sono
         var posizione_contatto = $(this).index();
+        //recupero immagine  contatto su cui sono
+        var immagine_contatto = $(this).find('img').clone();
+        //sostituisco l'immagine nell'header right con quella del contatto su cui sono
+        $(".img-header-right img").replaceWith(immagine_contatto);
+        //recupero il nome del contatto su cui sono
+        var nome_contatto = $(this).find('h4').text();
+        //sostituisco il nome nell'header-right con quello del contatto su cui sono
+        $('.img-header-right .info-text h4').text(nome_contatto)
         //definisco la posizione della chat corrispondente
         var chat_corrispondente = $('.chat').eq(posizione_contatto);
         //identifico la chat visibile
         var chat_corrente = $('.chat.chat-active');
-        console.log(chat_corrente);
         //rendo la chat  invisibile
         chat_corrente.removeClass('chat-active');
         //nascondo i messaggi al suo interno
         chat_corrente.find('.message').hide();
-        console.log(chat_corrente);
         //rendo visibile la chat corrispondente al contatto su cui ho cliccato
         chat_corrispondente.addClass('chat-active');
         //rendo visibili i suoi messaggi
         chat_corrispondente.find('.message').show();
-        console.log(chat_corrispondente);
     })
-
-
-
 
     //MILESTONE 3 PT 2
     $('body').on('click','.message i', function() {
+        //identifico  dropdown  corrispondente al messaggio su cui clicco
         var drop = $(this).next().next('.message-dropdown');
+        // se è già attivo li nascono tutti
         if (drop.hasClass('message-dropdown-active')) {
             $('.message-dropdown').removeClass('message-dropdown-active');
         } else {
+            //se non è attivo li nascondo tutti di base
             $('.message-dropdown').removeClass('message-dropdown-active');
+            // e poi apro solo quello su cui ho cliccato
             drop.addClass('message-dropdown-active');
         }
     })
 
+    //quando clicco su delete message elimino il messaggio corrispondente
     $('body').on('click','.message-delete', function() {
-        $(this).closest('.message').hide();
+        $(this).closest('.message').remove();
     })
 })
 
@@ -135,14 +148,3 @@ function orario() {
     }
     return time
 }
-
-
-
-
-// $('.chat-preview').click(function() {
-//     var indice_chat_corrente = $(this).index();
-//     var spazio_chat_corrispondente = $('.chat').eq(indice_chat_corrente);
-//     $('.chat-preview').removeClass('active-chat');
-//     spazio_chat_corrispondente.addClass('active-chat');
-//
-// })

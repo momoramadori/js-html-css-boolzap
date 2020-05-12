@@ -44,7 +44,7 @@ body {
     justify-content: space-between;
 }
 
-.img-header {
+.img-header-left, .img-header-right {
     height: 100%;
     display: flex;
     align-items: center;
@@ -70,7 +70,7 @@ body {
     background-repeat: repeat;
     overflow-y: scroll;
     padding: 30px;
-    display: none;
+    display: none
 }
 
 .chat-active {
@@ -311,7 +311,7 @@ input {
     justify-content: space-around;
 }
 
-.info img, .img-header img {
+.info img, .img-header-right img, .img-header-left img {
     height: 80%;
     width: auto;
     border-radius: 50%;
