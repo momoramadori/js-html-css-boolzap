@@ -17,7 +17,9 @@ $(document).ready(function() {
     })
 
     //Inseriamo l'input dell'utente in un messaggio al click dell'icona dell'aereo
-    $('.footer-right i').click(invia_messaggio)
+    $('.footer-right i').click(function() {
+        invia_messaggio();
+    })
     // //inviare anche con enter BONUS
     $('.footer-right input').keypress(function(event) {
         // verifico se l'utente ha digitato "ENTER"
@@ -38,7 +40,12 @@ $(document).ready(function() {
             // inserisco il testo dell'utente nello span "message-text"
             nuovo_messaggio.children('.casella').text(testo_utente);
             // inserisco il nuovo messaggio nel contenitore di tutti i messaggi della conversazione
-            $('.chat.chat-active').append(nuovo_messaggio);
+            var chat_messaggio_inviato = $('.chat.chat-active');
+            chat_messaggio_inviato.append(nuovo_messaggio);
+            //identifico il data della chat
+            var data = chat_messaggio_inviato.data('chat');
+            //identifico il contatto corrispondente e lo inserisco per primo
+            var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container')
             // resetto l'input
             $('.footer-right input').val('');
 
@@ -78,6 +85,7 @@ $(document).ready(function() {
             $('.input input').val('');
         }
     });
+
     //funzione per far apparire/scomparire i contatti cliccati
     function research() {
         //identifico il valore inserito dall'utente e lo rendo uppercase
@@ -101,16 +109,50 @@ $(document).ready(function() {
 
     //MILESTONE 3
 
-    //MILESTONE 3 PT 1
+    //MILESTONE 3 PT 1 (metodo INDEX)
 
-    //Al click aprire la chat del singolo utente e poterci scrivere
+    // //Al click aprire la chat del singolo utente e poterci scrivere
+    // $('.chat-preview').click(function() {
+    //     //tolgo lo sfondo grigio a tutte le chat
+    //     $('.chat-preview').removeClass('grey');
+    //     //metto lo sfondo grigio alla chat cliccata
+    //     $(this).addClass('grey');
+    //     //recupero la posizione del contatto su cui sono
+    //     var posizione_contatto = $(this).index();
+    //     //recupero immagine del contatto su cui sono e la duplico
+    //     var immagine_contatto = $(this).find('img').clone();
+    //     //sostituisco l'immagine nell'header right con quella del contatto su cui sono
+    //     $(".img-header-right img").replaceWith(immagine_contatto);
+    //     //recupero il nome del contatto su cui sono
+    //     var nome_contatto = $(this).find('h4').text();
+    //     //sostituisco il nome nell'header-right con quello del contatto su cui sono
+    //     $('.img-header-right .info-text h4').text(nome_contatto)
+    //     //definisco la posizione della chat corrispondente
+    //     var chat_corrispondente = $('.chat').eq(posizione_contatto);
+    //     //identifico la chat visibile
+    //     var chat_corrente = $('.chat.chat-active');
+    //     //rendo la chat  invisibile
+    //     chat_corrente.removeClass('chat-active');
+    //     //nascondo i messaggi al suo interno
+    //     chat_corrente.find('.message').hide();
+    //     //rendo visibile la chat corrispondente al contatto su cui ho cliccato
+    //     chat_corrispondente.addClass('chat-active');
+    //     //rendo visibili i suoi messaggi
+    //     chat_corrispondente.find('.message').show();
+    // })
+
+    //MILESTONE 3 pt 1 metodo: DATA!
+
     $('.chat-preview').click(function() {
+        //dettaglio 1
+        //quando cambio chat l'input del è vuoto
+        $('.footer-right input').val('');
+        //dettaglio 2
         //tolgo lo sfondo grigio a tutte le chat
         $('.chat-preview').removeClass('grey');
         //metto lo sfondo grigio alla chat cliccata
         $(this).addClass('grey');
-        //recupero la posizione del contatto su cui sono
-        var posizione_contatto = $(this).index();
+        //parte CORE
         //recupero immagine del contatto su cui sono e la duplico
         var immagine_contatto = $(this).find('img').clone();
         //sostituisco l'immagine nell'header right con quella del contatto su cui sono
@@ -119,18 +161,16 @@ $(document).ready(function() {
         var nome_contatto = $(this).find('h4').text();
         //sostituisco il nome nell'header-right con quello del contatto su cui sono
         $('.img-header-right .info-text h4').text(nome_contatto)
-        //definisco la posizione della chat corrispondente
-        var chat_corrispondente = $('.chat').eq(posizione_contatto);
-        //identifico la chat visibile
-        var chat_corrente = $('.chat.chat-active');
-        //rendo la chat  invisibile
-        chat_corrente.removeClass('chat-active');
-        //nascondo i messaggi al suo interno
-        chat_corrente.find('.message').hide();
-        //rendo visibile la chat corrispondente al contatto su cui ho cliccato
-        chat_corrispondente.addClass('chat-active');
-        //rendo visibili i suoi messaggi
-        chat_corrispondente.find('.message').show();
+        //rimuovo la classe active a tutte le chat
+        $('.chat').removeClass('chat-active');
+        //nascondo i messaggi di tutte le chat
+        $('.chat').find('.message').hide();
+        //identifico il codice del prodotto su cui ho cliccato
+        var contatto_data = $(this).data('chat');
+        //identifico la chat con data corrispondente
+        var chat_data_corrispondente = $('.chat[data-chat="'+ contatto_data +'"]').addClass('chat-active');
+        //mostro i messaggi di quella specifica chat
+        chat_data_corrispondente.find('.message').show();
     })
 
     //MILESTONE 3 PT 2
