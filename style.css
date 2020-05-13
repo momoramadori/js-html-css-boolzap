@@ -280,8 +280,12 @@ input {
     justify-content: space-between;
 }
 
+.grey {
+    background-color: rgb(215,215,215);
+}
+
 .chat-preview:hover {
-    background-color: rgb(215, 215, 215);
+    background-color: rgb(235, 235, 235);
 }
 
 .chat-preview .ora {

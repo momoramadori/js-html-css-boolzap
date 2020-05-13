@@ -62,16 +62,20 @@ $(document).ready(function() {
     //Ricerca contatti con click
     $('.input i').click(function(){
         //al click sull'icona applico la funzione ad ogni contatto e verifico il tutto, rimarranno visibili solo quelli che includono la ricerca
-        $(".info-text h4").each(research)
+        research();
         //dopodichè libero l'input
         $('.input input').val('');
     })
 
+    $('.input input').keyup(function(){
+        research();
+    })
+
     //faccio la stessa cosa ma con l'enter
-    $('.input input').keypress(function(event) {
+    $('.input input').keyup(function(event) {
         // verifico se l'utente ha digitato "ENTER"
         if(event.which == 13) {
-            $(".info-text h4").each(research)
+            research();
             $('.input input').val('');
         }
     });
@@ -80,13 +84,19 @@ $(document).ready(function() {
         //identifico il valore inserito dall'utente e lo rendo uppercase
         var ricerca_utente = $('.input input').val().toUpperCase();
         //identifico i nomi dei contatti e li rendo uppercase
-        var nomi_contatti = $(this).text().toUpperCase();
-        //se non includono la ricerca dell'utente li rendo invisibili
-        if (!(nomi_contatti.includes(ricerca_utente))) {
-            $(this).closest('.chat-preview').hide();
-            //se la ricerca dell'utente è vuota ricompaiono tutti
-        } else if (ricerca_utente == '') {
-            $('.chat-preview').show();
+        if (ricerca_utente != '') {
+            $(".chat-preview").each(function() {
+                var nomi_contatti = $(this).find('.info-text h4').text().toUpperCase();
+                //se non includono la ricerca dell'utente li rendo invisibili
+                if (nomi_contatti.includes(ricerca_utente)) {
+                    $(this).show();
+                    //se la ricerca dell'utente è vuota ricompaiono tutti
+                } else  {
+                    $(this).hide();
+                }
+            })
+        } else {
+            $(".chat-preview").show();
         }
     }
 
@@ -96,6 +106,8 @@ $(document).ready(function() {
 
     //Al click aprire la chat del singolo utente e poterci scrivere
     $('.chat-preview').click(function() {
+        $('.chat-preview').removeClass('grey');
+        $(this).addClass('grey');
         //recupero la posizione del contatto su cui sono
         var posizione_contatto = $(this).index();
         //recupero immagine  contatto su cui sono
