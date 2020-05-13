@@ -59,6 +59,10 @@ $(document).ready(function() {
     })
 
     //MILESTONE 2 PT 2
+    //ricerca in tempo reale
+    $('.input input').keyup(function(){
+        research();
+    })
     //Ricerca contatti con click
     $('.input i').click(function(){
         //al click sull'icona applico la funzione ad ogni contatto e verifico il tutto, rimarranno visibili solo quelli che includono la ricerca
@@ -66,11 +70,6 @@ $(document).ready(function() {
         //dopodichè libero l'input
         $('.input input').val('');
     })
-
-    $('.input input').keyup(function(){
-        research();
-    })
-
     //faccio la stessa cosa ma con l'enter
     $('.input input').keyup(function(event) {
         // verifico se l'utente ha digitato "ENTER"
@@ -79,7 +78,7 @@ $(document).ready(function() {
             $('.input input').val('');
         }
     });
-
+    //funzione per far apparire/scomparire i contatti cliccati
     function research() {
         //identifico il valore inserito dall'utente e lo rendo uppercase
         var ricerca_utente = $('.input input').val().toUpperCase();
@@ -106,11 +105,13 @@ $(document).ready(function() {
 
     //Al click aprire la chat del singolo utente e poterci scrivere
     $('.chat-preview').click(function() {
+        //tolgo lo sfondo grigio a tutte le chat
         $('.chat-preview').removeClass('grey');
+        //metto lo sfondo grigio alla chat cliccata
         $(this).addClass('grey');
         //recupero la posizione del contatto su cui sono
         var posizione_contatto = $(this).index();
-        //recupero immagine  contatto su cui sono
+        //recupero immagine del contatto su cui sono e la duplico
         var immagine_contatto = $(this).find('img').clone();
         //sostituisco l'immagine nell'header right con quella del contatto su cui sono
         $(".img-header-right img").replaceWith(immagine_contatto);
