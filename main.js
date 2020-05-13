@@ -52,6 +52,12 @@ $(document).ready(function() {
         }
     }
 
+    $('input').keydown(function (e) {
+        if($(this).val().length == 0 && e.which==32){
+            e.preventDefault();
+        }
+    })
+
     //MILESTONE 2 PT 2
     //Ricerca contatti con click
     $('.input i').click(function(){
