@@ -154,9 +154,11 @@ $(document).ready(function() {
         $(this).addClass('grey');
         //parte CORE
         //recupero immagine del contatto su cui sono e la duplico
-        var immagine_contatto = $(this).find('img').clone();
+        // var immagine_contatto = $(this).find('img').clone();
+        var immagine_contatto = $(this).find('img').attr('src')
         //sostituisco l'immagine nell'header right con quella del contatto su cui sono
-        $(".img-header-right img").replaceWith(immagine_contatto);
+        // $(".img-header-right img").replaceWith(immagine_contatto);
+        $('.img-header-right img').attr('src',immagine_contatto)
         //recupero il nome del contatto su cui sono
         var nome_contatto = $(this).find('h4').text();
         //sostituisco il nome nell'header-right con quello del contatto su cui sono
