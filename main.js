@@ -45,7 +45,7 @@ $(document).ready(function() {
             //identifico il data della chat
             var data = chat_messaggio_inviato.data('chat');
             //identifico il contatto corrispondente e lo inserisco per primo
-            var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container')
+            var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container');
             // resetto l'input
             $('.footer-right input').val('');
 
