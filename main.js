@@ -178,7 +178,7 @@ $(document).ready(function() {
     //MILESTONE 3 PT 2
     $('body').on('click','.message i', function() {
         //identifico  dropdown  corrispondente al messaggio su cui clicco
-        var drop = $(this).next().next('.message-dropdown');
+        var drop = $(this).siblings('.message-dropdown');
         // se è già attivo li nascono tutti
         if (drop.hasClass('message-dropdown-active')) {
             $('.message-dropdown').removeClass('message-dropdown-active');
@@ -189,7 +189,15 @@ $(document).ready(function() {
             drop.addClass('message-dropdown-active');
         }
     })
-
+    //quando mi sposto scompare il dropdown
+    $('body').on('mouseleave','.message', function() {
+        //identifico  dropdown  corrispondente al messaggio su cui clicco
+        var drop = $(this).find('.message-dropdown');
+        // se è già attivo li nascono tutti
+        if (drop.hasClass('message-dropdown-active')) {
+            $('.message-dropdown').removeClass('message-dropdown-active');
+        }
+    })
     //quando clicco su delete message elimino il messaggio corrispondente
     $('body').on('click','.message-delete', function() {
         $(this).closest('.message').remove();
