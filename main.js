@@ -202,18 +202,18 @@ $(document).ready(function() {
     $('body').on('click','.message-delete', function() {
         $(this).closest('.message').remove();
     })
-})
 
-//Aggiunto orario attuale alle chat
-$('.ora').text(orario());
-function orario() {
-    var today = new Date();
-    var hours = today.getHours();
-    var minutes = today.getMinutes();
-    if (minutes < 10) {
-        var time = today.getHours() + ":0" + today.getMinutes();
-    } else {
-        var time = today.getHours() + ":" + today.getMinutes();
+    //Aggiunto orario attuale alle chat
+    $('.ora').text(orario());
+    function orario() {
+        var today = new Date();
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        if (minutes < 10) {
+            var time = today.getHours() + ":0" + today.getMinutes();
+        } else {
+            var time = today.getHours() + ":" + today.getMinutes();
+        }
+        return time
     }
-    return time
-}
+})
