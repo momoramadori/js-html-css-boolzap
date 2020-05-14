@@ -47,10 +47,9 @@ $(document).ready(function() {
             //identifico il contatto corrispondente e lo inserisco per primo
             var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container');
             //effettua lo scroll COME FUNZIONA NON CAPISCO BENE
-            $('.chat.chat-active').scrollTop($('.chat.chat-active')[0].scrollHeight);
+            scroll_ing();
             //compare il messaggio dentro la chat preview
-            var testo_messaggio = nuovo_messaggio.text()
-            var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo_utente);
+            var testo_messaggio = nuovo_messaggio.text();
             // resetto l'input
             $('.footer-right input').val('');
 
@@ -62,11 +61,15 @@ $(document).ready(function() {
                 nuovo2_messaggio.children('.casella').text(testo);
                 $('.chat.chat-active').append(nuovo2_messaggio);
                 var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo);
-                $('.chat.chat-active').scrollTop($('.chat.chat-active')[0].scrollHeight);
+                scroll_ing();
             },1000)
         }
     }
 
+    function scroll_ing() {
+        //restituisce l'altezza dell'elemento in posozione zero e imposta a quel livello la scrollbar, quindi quando aumenta l'altezza per i numerosi messaggi varia anche la posizione della scrollbar
+        $('.chat.chat-active').scrollTop($('.chat.chat-active')[0].scrollHeight);
+    }
 
     $('input').keydown(function (e) {
         if($(this).val().length == 0 && e.which==32){
