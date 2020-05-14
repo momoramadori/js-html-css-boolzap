@@ -46,18 +46,27 @@ $(document).ready(function() {
             var data = chat_messaggio_inviato.data('chat');
             //identifico il contatto corrispondente e lo inserisco per primo
             var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container');
+            //effettua lo scroll COME FUNZIONA NON CAPISCO BENE
+            $('.chat.chat-active').scrollTop($('.chat.chat-active')[0].scrollHeight);
+            //compare il messaggio dentro la chat preview
+            var testo_messaggio = nuovo_messaggio.text()
+            var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo_utente);
             // resetto l'input
             $('.footer-right input').val('');
 
             //MILESTONE 2 PT 1
             setTimeout(function(){
+                var testo = 'ok!'
                 var nuovo2_messaggio = $('.template .message').clone();
                 nuovo2_messaggio.addClass('other-message');
-                nuovo2_messaggio.children('.casella').text('ok!');
+                nuovo2_messaggio.children('.casella').text(testo);
                 $('.chat.chat-active').append(nuovo2_messaggio);
+                var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo);
+                $('.chat.chat-active').scrollTop($('.chat.chat-active')[0].scrollHeight);
             },1000)
         }
     }
+
 
     $('input').keydown(function (e) {
         if($(this).val().length == 0 && e.which==32){
