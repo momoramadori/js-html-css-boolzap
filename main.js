@@ -42,11 +42,23 @@ $(document).ready(function() {
             // inserisco il nuovo messaggio nel contenitore di tutti i messaggi della conversazione
             var chat_messaggio_inviato = $('.chat.chat-active');
             chat_messaggio_inviato.append(nuovo_messaggio);
+            //aggiungo la dicitura online quando la chat è attiva ed ho inviato il messaggio
+            if ($('.chat').hasClass('chat-active')) {
+                $('.header-right p').html('Online')
+            }
+            //Inserisco la feature sta scrivendo con un timing di mezzo secondo (ultimo acc-> online -> sta scrivendo -> ultimo acc)
+            setTimeout(function(){
+                $('.header-right p').html('Sta scrivendo...')
+                $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container').find('.info-textp').text('Sta scrivendo...')
+            },500)
             //identifico il data della chat
             var data = chat_messaggio_inviato.data('chat');
             //identifico il contatto corrispondente e lo inserisco per primo
             var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container');
-            //effettua lo scroll COME FUNZIONA NON CAPISCO BENE
+            //aggiungo ora corrispondente al messaggio inviato al contatto_data
+            var ora_messaggio = nuovo_messaggio.find('.ora').text(orario());
+            contatto_data.find('.ora').text(ora_messaggio.text());
+            //effettua lo scroll
             scroll_ing();
             //compare il messaggio dentro la chat preview
             var testo_messaggio = nuovo_messaggio.text();
@@ -61,13 +73,20 @@ $(document).ready(function() {
                 nuovo2_messaggio.children('.casella').text(testo);
                 $('.chat.chat-active').append(nuovo2_messaggio);
                 var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo);
+                var ora_messaggio = nuovo2_messaggio.find('.ora').text(orario());
+                contatto_testo.find('.ora').text(ora_messaggio.text());
+                //dopo 1 secondo rimetto l'ultimo accesso anziche online e sta scrivendo
+                $('.header-right p').html('<p>Ultimo accesso oggi alle <span class="ora"></span></p>')
+                //aggiungo l'orario attuale
+                $('.info-text .ora').text(orario());
+                //funzione per fare scroll
                 scroll_ing();
             },1000)
         }
     }
 
     function scroll_ing() {
-        //restituisce l'altezza dell'elemento in posozione zero e imposta a quel livello la scrollbar, quindi quando aumenta l'altezza per i numerosi messaggi varia anche la posizione della scrollbar
+        //restituisce l'altezza dell'elemento in posizione zero e imposta a quel livello la scrollbar, quindi quando aumenta l'altezza per i numerosi messaggi varia anche la posizione della scrollbar
         $('.chat.chat-active').scrollTop($('.chat.chat-active')[0].scrollHeight);
     }
 
@@ -157,7 +176,7 @@ $(document).ready(function() {
 
     $('.chat-preview').click(function() {
         //dettaglio 1
-        //quando cambio chat l'input del è vuoto
+        //quando cambio chat l'input è vuoto
         $('.footer-right input').val('');
         //dettaglio 2
         //tolgo lo sfondo grigio a tutte le chat
@@ -215,8 +234,9 @@ $(document).ready(function() {
         $(this).closest('.message').remove();
     })
 
-    //Aggiunto orario attuale alle chat
-    $('.ora').text(orario());
+    //Aggiungo orario attuale  come ultimo accesso
+    $('.info-text .ora').text(orario());
+
     function orario() {
         var today = new Date();
         var hours = today.getHours();
@@ -228,4 +248,6 @@ $(document).ready(function() {
         }
         return time
     }
+
+
 })
