@@ -1,4 +1,4 @@
-
+//VERSIONE DEFINITIVA (SE AVETE FEATURES SUGGERITELE)
 $(document).ready(function() {
 
     //MILESTONE 1 PT 1
