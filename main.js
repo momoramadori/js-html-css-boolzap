@@ -33,16 +33,27 @@ $(document).ready(function() {
         var testo_utente = $('.footer-right input').val();
         // verifico che il testo digitato non sia vuoto (o che non contenga solo " ")
         if(testo_utente.trim() != '') {
-            // faccio una copia del template per creare un nuovo messaggio
-            var nuovo_messaggio = $('.template .message').clone();
-            // aggiungo la classe "sent" al messaggio
-            nuovo_messaggio.addClass('my-message');
-            // inserisco il testo dell'utente nello span "message-text"
-            nuovo_messaggio.children('.casella').text(testo_utente);
-            // inserisco il nuovo messaggio nel contenitore di tutti i messaggi della conversazione
-            var chat_messaggio_inviato = $('.chat.chat-active');
-            chat_messaggio_inviato.append(nuovo_messaggio);
-            //aggiungo la dicitura online quando la chat è attiva ed ho inviato il messaggio
+            // // faccio una copia del template per creare un nuovo messaggio
+            // var nuovo_messaggio = $('.template .message').clone();
+            // // aggiungo la classe "sent" al messaggio
+            // nuovo_messaggio.addClass('my-message');
+            // // inserisco il testo dell'utente nello span "message-text"
+            // nuovo_messaggio.children('.casella').text(testo_utente);
+            // // inserisco il nuovo messaggio nel contenitore di tutti i messaggi della conversazione
+            // var chat_messaggio_inviato = $('.chat.chat-active');
+            // chat_messaggio_inviato.append(nuovo_messaggio);
+
+            var template_html = $('.template').html();
+            var template = Handlebars.compile(template_html);
+
+            var contenuto = {
+                'testo' : testo_utente
+            };
+            var html = template(contenuto);
+            // appendo il nuovo fumetto risposta utente
+            $('.chat.chat-active').append(html);
+            $('.message:not(.message.other-message)').addClass('my-message')
+
             if ($('.chat').hasClass('chat-active')) {
                 $('.header-right p').html('Online')
             }
@@ -52,28 +63,37 @@ $(document).ready(function() {
                 $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container').find('.info-textp').text('Sta scrivendo...')
             },500)
             //identifico il data della chat
-            var data = chat_messaggio_inviato.data('chat');
+            var data = $('.chat.chat-active').data('chat');
             //identifico il contatto corrispondente e lo inserisco per primo
             var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container');
             //aggiungo ora corrispondente al messaggio inviato al contatto_data
-            var ora_messaggio = nuovo_messaggio.find('.ora').text(orario());
+            var ora_messaggio = $('.template .message').find('.ora').text(orario());
             contatto_data.find('.ora').text(ora_messaggio.text());
             //effettua lo scroll
             scroll_ing();
             //compare il messaggio dentro la chat preview
-            var testo_messaggio = nuovo_messaggio.text();
+            var testo_messaggio = $('.template .message').text();
             // resetto l'input
             $('.footer-right input').val('');
 
             //MILESTONE 2 PT 1
             setTimeout(function(){
-                var testo = 'ok!'
-                var nuovo2_messaggio = $('.template .message').clone();
-                nuovo2_messaggio.addClass('other-message');
-                nuovo2_messaggio.children('.casella').text(testo);
-                $('.chat.chat-active').append(nuovo2_messaggio);
+                var template_html_1 = $('.template').html();
+                var template_1 = Handlebars.compile(template_html_1);
+                var testo = 'Ok!'
+                var contenuto_1 = {
+                    'testo': testo
+                };
+                var html_1 = template(contenuto_1);
+                $('.chat.chat-active').append(html_1);
+                $('.message').addClass('other-message')
+                // var nuovo2_messaggio = $('.template .message').clone();
+                // nuovo2_messaggio.addClass('other-message');
+                // nuovo2_messaggio.children('.casella').text(testo);
+                // $('.chat.chat-active').append(nuovo2_messaggio);
+
                 var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo);
-                var ora_messaggio = nuovo2_messaggio.find('.ora').text(orario());
+                var ora_messaggio = $('.message').find('.ora').text(orario());
                 contatto_testo.find('.ora').text(ora_messaggio.text());
                 //dopo 1 secondo rimetto l'ultimo accesso anziche online e sta scrivendo
                 $('.header-right p').html('<p>Ultimo accesso oggi alle <span class="ora"></span></p>')

@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Jost:400,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/a41fcd4d62.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
@@ -177,16 +178,16 @@
                 </div>
             </div>
         </div>
-        <div class="template">
+        <script class="template" type="text/x-handlebars-template">
             <div class="message">
                 <p class="ora messaggio"></p>
                 <i class="fas fa-angle-down"></i>
-                <p class='casella'></p>
+                <p class='casella'>{{ testo }}</p>
                 <div class="message-dropdown">
                     <p class="message-info">Message Info</p>
                     <p class="message-delete">Delete Message</p>
                 </div>
-            </div>
+            </script>
 
         <script src="main.js" charset="utf-8"></script>
     </body>

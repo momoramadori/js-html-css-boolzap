@@ -101,7 +101,6 @@ body {
     top: 70%;
     background-color: rgb(237,237,237);
     border-radius: 5px;
-
     z-index: 10;
     font-size: 14px;
 }
@@ -331,9 +330,9 @@ input {
     font-size: 14px;
 }
 
-.template {
+/* .template {
     display: none;
-}
+} */
 
 @media (max-width: 1280px) {
     .container {
