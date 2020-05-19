@@ -52,6 +52,7 @@ $(document).ready(function() {
             var template = Handlebars.compile(template_html);
             // preparo un oggetto con il testo del messaggio da inserire nel template
             var contenuto = {
+                'classe': 'my-message',
                 'testo' : testo_utente
             };
             // tramite handlebars preparo l'html finale con il messaggio all'interno
@@ -59,7 +60,7 @@ $(document).ready(function() {
             //inserisco il nuovo bubble nella chat attiva
             $('.chat.chat-active').append(html);
             //evito che la classe my-message venga messa ai messaggi con la classe other-message
-            $('.message:not(.message.other-message)').addClass('my-message')
+            // $('.message:not(.message.other-message)').addClass('my-message')
 
             if ($('.chat').hasClass('chat-active')) {
                 $('.header-right p').html('Online')
@@ -75,7 +76,7 @@ $(document).ready(function() {
             var contatto_data = $('.chat-preview[data-chat="'+data+'"]').prependTo('.chat-container');
             //aggiungo ora corrispondente al messaggio inviato al contatto_data
             var ora_messaggio = $('.message.my-message').find('.ora').text(orario());
-            contatto_data.find('.ora').text(ora_messaggio.text());
+            contatto_data.find('.ora').text(orario());
             //effettua lo scroll
             scroll_ing();
             //compare il messaggio dentro la chat preview
@@ -93,6 +94,7 @@ $(document).ready(function() {
                 var testo = 'Ok!'
                 //preparo un oggetto con il testo da inserire nel template
                 var contenuto = {
+                    'classe': 'other-message',
                     'testo': testo
                 };
                 // tramite handlebars preparo l'html finale con il messaggio all'interno
@@ -100,7 +102,7 @@ $(document).ready(function() {
                 //inserisco il nuovo bubble nella chat attiva
                 $('.chat.chat-active').append(html);
 
-                $('.message:not(.message.my-message)').addClass('other-message');
+                // $('.message:not(.message.my-message)').addClass('other-message');
 
                 //Vecchia modalità con template senza handelbars
 
@@ -111,7 +113,7 @@ $(document).ready(function() {
 
                 var contatto_testo = $('.chat-preview[data-chat="'+data+'"]').find('.info-text p').text(testo);
                 var ora_messaggio = $('.message.other-message').find('.ora').text(orario());
-                contatto_testo.find('.ora').text(ora_messaggio.text());
+                contatto_testo.find('.ora').text(orario());
                 //dopo 1 secondo rimetto l'ultimo accesso anziche online e sta scrivendo
                 $('.header-right p').html('<p>Ultimo accesso oggi alle <span class="ora"></span></p>')
                 //aggiungo l'orario attuale
