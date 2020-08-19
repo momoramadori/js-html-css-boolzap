@@ -361,7 +361,7 @@ input {
         display: none;
     }
 
-    .right, .left {
+    .right, .left, .container  {
         height: 100vh;
         overflow: scroll;
     }
@@ -371,7 +371,7 @@ input {
     }
 
     .chat-container {
-        height: calc(100% - 43px);
+        height: 100%;
     }
 
     .fa-chevron-left {
