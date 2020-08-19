@@ -371,7 +371,7 @@ input {
     }
 
     .chat-container {
-        height: 100%;
+        height: calc(100% - 43px);
     }
 
     .fa-chevron-left {
