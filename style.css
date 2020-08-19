@@ -361,7 +361,7 @@ input {
         display: none;
     }
 
-    .right, .left, .container  {
+    .right, .left {
         height: 100vh;
         overflow: scroll;
     }
