@@ -5,10 +5,11 @@ $(document).ready(function() {
     if($(window).width()<768){
         $('.right').removeClass('visible');
         $('.left').removeClass('visible');
-        //cliccando sulla x nelle chat mi riporta alla ricerca
+        //cliccando sulla freccia nelle chat mi riporta alla ricerca
         $('.fa-chevron-left').click(function(){
             $('.right').removeClass('visible');
             $('.left').addClass('visible');
+            $('.left').removeClass('unvisible');
             $('.input input').val('');
             $('.chat-preview').show();
         });

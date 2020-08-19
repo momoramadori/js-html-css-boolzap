@@ -349,14 +349,25 @@ input {
 }
 
 @media (max-width: 768px) {
-    .right, .banner {
-        display: none;
-    }
-    .left.unvisible {
-        display: none;
+    
+    body {
+        height: auto;
     }
     .left, .right, .header-right, .header-left {
         width: 100%;
+    }
+
+    .left.unvisible {
+        display: none;
+    }
+
+    .right, .left {
+        height: 100vh;
+        overflow: scroll;
+    }
+
+    .right, .banner {
+        display: none;
     }
 
     .chat-container {
