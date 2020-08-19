@@ -334,8 +334,42 @@ input {
     display: none;
 } */
 
+.fa-chevron-left:before {
+    display: none;
+}
+
+.visible {
+    display: block !important;
+}
 @media (max-width: 1280px) {
     .container {
         width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .right, .banner {
+        display: none;
+    }
+    .left.unvisible {
+        display: none;
+    }
+    .left, .right, .header-right, .header-left {
+        width: 100%;
+    }
+
+    .chat-container {
+        height: calc(100% - 43px);
+    }
+
+    .fa-chevron-left {
+        padding-right: 15px;
+        color: grey;
+        display: inline;
+    }
+
+    .fa-chevron-left:before {
+        display: block;
     }
 }

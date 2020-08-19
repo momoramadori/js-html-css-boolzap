@@ -1,6 +1,28 @@
 //VERSIONE DEFINITIVA (SE AVETE FEATURES SUGGERITELE)
 $(document).ready(function() {
 
+    //RESPONSIVE 
+    if($(window).width()<768){
+        $('.right').removeClass('visible');
+        $('.left').removeClass('visible');
+        //cliccando sulla x nelle chat mi riporta alla ricerca
+        $('.fa-chevron-left').click(function(){
+            $('.right').removeClass('visible');
+            $('.left').addClass('visible');
+            $('.input input').val('');
+            $('.chat-preview').show();
+        });
+        //Quando sono nella barra di ricerca e clicco un contatto deve aprirmi la sua chat
+        $('.chat-preview').click(function(){
+            $('.right').addClass('visible');
+            $('.left').removeClass('visible');
+            $('.left').addClass('unvisible');
+        })
+    } else {
+        $('.right').addClass('visible');
+        $('.left').addClass('visible');
+    }
+    
     //MILESTONE 1 PT 1
 
     //Icona dell'aereoplano sostituisce il microfono quando entriamo sull'input
